@@ -7,7 +7,8 @@ class Round {
     this.incorrectGuesses = [];
   }
   takeTurn(guess) {
-    let turn = new Turn(guess, this.returnCurrentCard());
+    const currentCard = this.returnCurrentCard();
+    const turn = new Turn(guess, currentCard);
     if(turn.evaluateCard() === false) {
       this.incorrectGuesses.unshift(this.deck[this.turns].id)
     }
@@ -18,7 +19,7 @@ class Round {
     return this.deck[this.turns];
   }
   calculatePercentCorrect() {
-    return (this.incorrectGuesses.length / this.turns) * 100
+    return (Math.abs(this.incorrectGuesses.length - this.turns) / this.turns) * 100
   }
 };
 module.exports = Round;
