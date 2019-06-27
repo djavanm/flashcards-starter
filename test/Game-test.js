@@ -40,6 +40,7 @@ describe('Game', function() {
     const deck = new Deck(cards);
     const round = new Round(deck);
     const game = new Game();
+    game.start();
     expect(game.currentRound).to.deep.equal(round);
   });
   
@@ -51,7 +52,8 @@ describe('Game', function() {
     const deck = new Deck(cards);
     const round = new Round(deck);
     const game = new Game();
-    expect(game.start()).to.deep.equal();
+    game.start();
+    expect(game.currentRound).to.deep.equal(round);
   });
   // it('should return the current card', function() {
   //   const card1 = new Card(1, 'What is Robbie\'s favorite animal', ['sea otter', 'pug', 'capybara'], 'sea otter');
